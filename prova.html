@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Revisão NP1 – Prova (Banco de Dados e Alta Performance)</title>
+<style>
+  :root{--bg:#0f172a;--card:#0b1222;--ink:#e5e7eb;--muted:#94a3b8;--brand:#22c55e;--accent:#38bdf8;--danger:#f43f5e}
+  *{box-sizing:border-box} body{margin:0;background:#0a0f1f;color:var(--ink);font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;line-height:1.55}
+  header{padding:20px 16px;background:linear-gradient(180deg,rgba(56,189,248,.08),rgba(34,197,94,.06));border-bottom:1px solid rgba(148,163,184,.2)}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 16px 64px}
+  h1{margin:.2rem 0 0;font-size:1.6rem}.sub{color:var(--muted)}
+  h2{margin-top:28px}
+  .card{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.008));border:1px solid rgba(148,163,184,.2);border-radius:16px;padding:16px;margin:14px 0}
+  .qtitle{font-weight:700;margin-bottom:8px}
+  .qmeta{color:var(--muted);font-size:.9rem;margin-top:2px}
+  .alt{display:block;padding:10px 12px;border:1px solid rgba(148,163,184,.25);border-radius:12px;margin:8px 0;cursor:pointer}
+  .alt:hover{border-color:var(--accent);background:rgba(56,189,248,.06)}
+  .row{display:flex;gap:10px;flex-wrap:wrap}
+  input[type="text"],input[type="email"]{background:#0b1222;color:var(--ink);border:1px solid rgba(148,163,184,.35);padding:10px 12px;border-radius:10px;width:260px}
+  textarea{width:100%;min-height:120px;background:#0b1222;color:var(--ink);border:1px solid rgba(148,163,184,.35);border-radius:12px;padding:10px 12px}
+  .controls{position:sticky;bottom:0;background:linear-gradient(180deg,rgba(10,15,31,.2),rgba(10,15,31,.95));backdrop-filter:blur(8px);border-top:1px solid rgba(148,163,184,.2);padding:12px 16px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;z-index:10}
+  button{border:1px solid rgba(148,163,184,.3);background:#0b1222;color:var(--ink);padding:10px 14px;border-radius:12px;cursor:pointer;font-weight:700}
+  button.primary{background:linear-gradient(90deg,var(--brand),#16a34a);border:none;color:#06230f}
+  .small{color:var(--muted);font-size:.9rem}
+</style>
+</head>
+<body>
+<header class="wrap">
+  <h1>Revisão NP1 – Banco de Dados e Alta Performance</h1>
+  <div class="sub">Marque suas respostas e clique em <strong>Enviar respostas</strong>. A próxima página mostrará sua nota e o que errou.</div>
+</header>
+<main class="wrap">
+
+  <!-- Identificação -->
+  <div class="card">
+    <div class="qtitle">Identificação</div>
+    <div class="row">
+      <input id="aluno" type="text" placeholder="Seu nome completo" />
+      <input id="email" type="email" placeholder="Seu e-mail (opcional)" />
+    </div>
+    <div class="small">O e-mail é usado só para exportar o resultado, se você quiser.</div>
+  </div>
+
+  <!-- =================== PARTE 1 – UNIDADE 01 (como você aprovou) =================== -->
+  <h2>Parte 1 – Unidade 01 (Fundamentos)</h2>
+
+  <!-- Q1 -->
+  <div class="card" data-q="q1" data-enun="UNIDADE01 Q1 – Objetivo principal de um SGBD (DBMS)">
+    <div class="qtitle">1. (Múltipla Escolha)</div>
+    <p>A gestão de dados é um pilar para a sobrevivência e o crescimento de qualquer empresa no mercado moderno, independentemente do seu porte. Para gerenciar grandes volumes de dados de forma segura e eficiente, é necessário um software especializado. Qual é o principal objetivo de um Sistema de Gerenciamento de Banco de Dados (SGBD)?</p>
+    <label class="alt"><input type="radio" name="q1" value="a"> a) Desenvolver a interface gráfica das aplicações que consomem os dados, focando na experiência do usuário final e na usabilidade dos sistemas de software.</label>
+    <label class="alt"><input type="radio" name="q1" value="b"> b) Fornecer uma maneira conveniente e eficiente para armazenar e, principalmente, recuperar informações de um banco de dados, garantindo a segurança e a integridade dos mesmos.</label>
+    <label class="alt"><input type="radio" name="q1" value="c"> c) Criar e gerenciar a infraestrutura de rede e os servidores físicos onde os dados são armazenados, otimizando o hardware para a velocidade de processamento.</label>
+    <label class="alt"><input type="radio" name="q1" value="d"> d) Escrever o código-fonte das aplicações de negócio que utilizam o banco de dados, como sistemas de CRM ou ERP, definindo as regras de negócio da empresa.</label>
+    <label class="alt"><input type="radio" name="q1" value="e"> e) Realizar a análise preditiva e aplicar inteligência artificial sobre os dados brutos, gerando relatórios estratégicos para a tomada de decisão da diretoria da empresa.</label>
+  </div>
+
+  <!-- Q2 -->
+  <div class="card" data-q="q2" data-enun="UNIDADE01 Q2 – Tipos básicos de bancos de dados">
+    <div class="qtitle">2. (Múltipla Escolha)</div>
+    <p>O campo de banco de dados evoluiu para atender a diferentes necessidades de armazenamento, especialmente com o advento de dados não estruturados gerados em grande volume. O material didático apresenta uma distinção fundamental entre os paradigmas de armazenamento de dados. Quais são os dois tipos básicos de banco de dados mencionados no texto?</p>
+    <label class="alt"><input type="radio" name="q2" value="a"> a) Bancos de dados SQL e bancos de dados de Planilha, sendo o primeiro para dados complexos e o segundo para dados simples e tabulares como os do Excel.</label>
+    <label class="alt"><input type="radio" name="q2" value="b"> b) Bancos de dados de alta disponibilidade e bancos de dados de alta performance, que se diferenciam pela capacidade de resposta e tempo de atividade contínua.</label>
+    <label class="alt"><input type="radio" name="q2" value="c"> c) Bancos de dados relacionais e bancos de dados não relacionais (NoSQL), que se distinguem pela forma como organizam e armazenam os dados.</label>
+    <label class="alt"><input type="radio" name="q2" value="d"> d) Bancos de dados para aplicações web e bancos de dados para dispositivos móveis, cuja principal diferença está na plataforma em que são executados.</label>
+    <label class="alt"><input type="radio" name="q2" value="e"> e) Bancos de dados de código aberto, como o MySQL, e bancos de dados comerciais, como o Oracle, que se diferenciam pelo modelo de licenciamento e custo.</label>
+  </div>
+
+  <!-- Q3 -->
+  <div class="card" data-q="q3" data-enun="UNIDADE01 Q3 – Definição de Metadados">
+    <div class="qtitle">3. (Múltipla Escolha)</div>
+    <p>Para que um banco de dados seja bem projetado e compreendido, é crucial documentar suas estruturas, regras e componentes. Essa documentação utiliza um conceito fundamental que descreve os dados, em vez de representar os dados de negócio em si. Como o material define o conceito de "metadados"?</p>
+    <label class="alt"><input type="radio" name="q3" value="a"> a) São as cópias de segurança ("backups") dos bancos de dados, que contêm todos os registros e tabelas para fins de recuperação em caso de desastres.</label>
+    <label class="alt"><input type="radio" name="q3" value="b"> b) São os "dados sobre os dados", ou seja, informações que descrevem as estruturas do banco de dados, como tabelas, tipos de dados, restrições e outros objetos.</label>
+    <label class="alt"><input type="radio" name="q3" value="c"> c) Representam as transações de negócio realizadas no banco de dados, como o registro de uma venda ou a inclusão de um novo cliente no sistema.</label>
+    <label class="alt"><input type="radio" name="q3" value="d"> d) É um sinônimo para o Dicionário de Dados, referindo-se ao documento completo que especifica todos os requisitos de um projeto de banco de dados.</label>
+    <label class="alt"><input type="radio" name="q3" value="e"> e) São os dados brutos coletados pela empresa antes de serem processados, tratados e armazenados de forma estruturada no banco de dados.</label>
+  </div>
+
+  <!-- Q4 -->
+  <div class="card" data-q="q4" data-enun="UNIDADE01 Q4 – Normalização e anomalias">
+    <div class="qtitle">4. (Análise de Sentenças)</div>
+    <p>A normalização é um processo técnico e formal introduzido por E. F. Codd, fundamental para a criação de bancos de dados relacionais robustos e eficientes. Seu principal objetivo é "purificar" a estrutura das entidades para evitar problemas conhecidos como anomalias de atualização. Com base no material, analise as sentenças a seguir sobre os problemas que a normalização busca resolver:</p>
+    <p>I- A normalização visa eliminar a redundância de dados, como ter que repetir o nome e a titulação de um professor para cada aluno matriculado em sua disciplina.<br>
+    II- Um dos problemas evitados pela normalização é a perda acidental de informações, que ocorre, por exemplo, ao excluir o único aluno de uma disciplina e, com isso, perder os dados da própria disciplina e do professor.<br>
+    III- A normalização corrige anomalias de inserção, que se manifestam quando não é possível adicionar um novo curso ao banco de dados até que ao menos um aluno esteja matriculado nele.</p>
+    <label class="alt"><input type="radio" name="q4" value="A"> A) Apenas a sentença I está correta.</label>
+    <label class="alt"><input type="radio" name="q4" value="B"> B) Apenas as sentenças I e II estão corretas.</label>
+    <label class="alt"><input type="radio" name="q4" value="C"> C) Apenas as sentenças II e III estão corretas.</label>
+    <label class="alt"><input type="radio" name="q4" value="D"> D) Todas as sentenças estão corretas.</label>
+    <label class="alt"><input type="radio" name="q4" value="E"> E) Nenhuma das sentenças está correta.</label>
+  </div>
+
+  <!-- Q5 -->
+  <div class="card" data-q="q5" data-enun="UNIDADE01 Q5 – Chaves (Primária, Estrangeira, Superchave)">
+    <div class="qtitle">5. (Análise de Sentenças)</div>
+    <p>No modelo relacional, as chaves são atributos ou conjuntos de atributos essenciais para identificar registros de forma única e para estabelecer vínculos lógicos entre as tabelas. A partir dos conceitos apresentados, avalie as seguintes afirmativas:</p>
+    <p>I- Uma chave primária pode ser composta por mais de um atributo (chave composta), sendo utilizada quando um único atributo não é suficiente para garantir a unicidade de um registro.<br>
+    II- Uma chave estrangeira é um atributo em uma tabela que faz referência à chave primária de outra tabela, podendo ter seus valores repetidos para representar relacionamentos do tipo "1 para N".<br>
+    III- Uma superchave é um conjunto de atributos que identifica unicamente um registro, e quando essa superchave não pode ser mais reduzida, ela se torna uma chave estrangeira.</p>
+    <label class="alt"><input type="radio" name="q5" value="A"> A) Apenas a sentença II está correta.</label>
+    <label class="alt"><input type="radio" name="q5" value="B"> B) Apenas as sentenças I e II estão corretas.</label>
+    <label class="alt"><input type="radio" name="q5" value="C"> C) Apenas as sentenças II e III estão corretas.</label>
+    <label class="alt"><input type="radio" name="q5" value="D"> D) Todas as sentenças estão corretas.</label>
+    <label class="alt"><input type="radio" name="q5" value="E"> E) Apenas as sentenças I e III estão corretas.</label>
+  </div>
+
+  <!-- Q6 -->
+  <div class="card" data-q="q6" data-enun="UNIDADE01 Q6 – Cardinalidade (1:1, 1:N, N:M)">
+    <div class="qtitle">6. (Análise de Sentenças)</div>
+    <p>A cardinalidade é um conceito que define a natureza dos relacionamentos entre entidades, especificando quantos registros de uma entidade podem se associar a registros de outra. Com base no material, analise as proposições:</p>
+    <p>I- Em um relacionamento "1 para 1", um único registro em uma primeira entidade se relaciona com, no máximo, um único registro em uma segunda entidade.<br>
+    II- Para modelar um relacionamento "N para M" (muitos-para-muitos), é necessário criar uma entidade intermediária, que conterá as chaves primárias de ambas as entidades originais como chaves estrangeiras.<br>
+    III- Em um relacionamento "1 para N", a chave primária da entidade do lado "1" não pode se repetir em sua própria tabela, mas pode aparecer várias vezes como chave estrangeira na tabela do lado "N".</p>
+    <label class="alt"><input type="radio" name="q6" value="A"> A) Apenas a sentença I está correta.</label>
+    <label class="alt"><input type="radio" name="q6" value="B"> B) Apenas as sentenças I e III estão corretas.</label>
+    <label class="alt"><input type="radio" name="q6" value="C"> C) Apenas as sentenças II e III estão corretas.</label>
+    <label class="alt"><input type="radio" name="q6" value="D"> D) Todas as sentenças estão corretas.</label>
+    <label class="alt"><input type="radio" name="q6" value="E"> E) Nenhuma das sentenças está correta.</label>
+  </div>
+
+  <!-- Q7 -->
+  <div class="card" data-q="q7" data-enun="UNIDADE01 Q7 – Asserção/Razão – Evitar colunas calculadas">
+    <div class="qtitle">7. (Asserção e Razão)</div>
+    <p>Asserção (A): Ao projetar um banco de dados de alto desempenho, a prática recomendada é evitar o armazenamento de colunas calculadas, como "Valor Total da Venda".<br>
+    PORQUE<br>
+    Razão (R): O armazenamento de dados calculados representa um consumo desnecessário de recursos de disco, uma vez que esse valor pode ser gerado dinamicamente durante uma consulta via SQL, garantindo economia de espaço e consistência da informação.</p>
+    <label class="alt"><input type="radio" name="q7" value="a"> a) A e R verdadeiras, e R justifica A.</label>
+    <label class="alt"><input type="radio" name="q7" value="b"> b) A e R verdadeiras, mas R não justifica A.</label>
+    <label class="alt"><input type="radio" name="q7" value="c"> c) A verdadeira; R falsa.</label>
+    <label class="alt"><input type="radio" name="q7" value="d"> d) A falsa; R verdadeira.</label>
+    <label class="alt"><input type="radio" name="q7" value="e"> e) A e R falsas.</label>
+  </div>
+
+  <!-- Q8 -->
+  <div class="card" data-q="q8" data-enun="UNIDADE01 Q8 – Asserção/Razão – 3FN e dependência transitiva">
+    <div class="qtitle">8. (Asserção e Razão)</div>
+    <p>Asserção (A): Para uma tabela estar na Terceira Forma Normal (3FN), um dos requisitos é que não existam dependências funcionais transitivas entre seus atributos não-chave.<br>
+    PORQUE<br>
+    Razão (R): Uma dependência funcional transitiva ocorre quando um atributo não-chave depende diretamente de outro atributo não-chave, em vez de depender exclusivamente da chave primária da tabela.</p>
+    <label class="alt"><input type="radio" name="q8" value="a"> a) A e R verdadeiras, e R justifica A.</label>
+    <label class="alt"><input type="radio" name="q8" value="b"> b) A e R verdadeiras, mas R não justifica A.</label>
+    <label class="alt"><input type="radio" name="q8" value="c"> c) A verdadeira; R falsa.</label>
+    <label class="alt"><input type="radio" name="q8" value="d"> d) A falsa; R verdadeira.</label>
+    <label class="alt"><input type="radio" name="q8" value="e"> e) A e R falsas.</label>
+  </div>
+
+  <!-- Q9 -->
+  <div class="card" data-q="q9" data-enun="UNIDADE01 Q9 – Asserção/Razão – Dicionário de Dados">
+    <div class="qtitle">9. (Asserção e Razão)</div>
+    <p>Asserção (A): O Dicionário de Dados é um produto da fase de análise de requisitos e deve conter informações como nomes de tabelas, nomes e tipos de colunas, e detalhes sobre chaves primárias e estrangeiras.<br>
+    PORQUE<br>
+    Razão (R): O objetivo principal do Dicionário de Dados é armazenar os próprios dados de negócio da empresa, como a lista de clientes ou o histórico de transações, para garantir que eles sejam acessados de forma rápida e eficiente.</p>
+    <label class="alt"><input type="radio" name="q9" value="a"> a) A e R verdadeiras, e R justifica A.</label>
+    <label class="alt"><input type="radio" name="q9" value="b"> b) A e R verdadeiras, mas R não justifica A.</label>
+    <label class="alt"><input type="radio" name="q9" value="c"> c) A verdadeira; R falsa.</label>
+    <label class="alt"><input type="radio" name="q9" value="d"> d) A falsa; R verdadeira.</label>
+    <label class="alt"><input type="radio" name="q9" value="e"> e) A e R falsas.</label>
+  </div>
+
+  <!-- =================== PARTE 2 – UNIDADE 02 (texto fiel ao PDF) =================== -->
+  <h2>Parte 2 – Unidade 02 (MySQL & SQL)</h2>
+
+  <!-- Q10 — UNIDADE02 / Questão 1 -->
+  <div class="card" data-q="q10" data-enun="UNIDADE02 Q1 – Subconjuntos SQL (DDL)">
+    <div class="qtitle">1. (Múltipla Escolha)</div>
+    <p>A linguagem SQL é organizada em subconjuntos de comandos, cada um com uma finalidade específica dentro do gerenciamento de um banco de dados, seja para definir estruturas, manipular dados ou controlar permissões. Essa organização ajuda a compreender o papel de cada operação. Qual dos comandos a seguir pertence à Linguagem de Definição de Dados (DDL - Data Definition Language)?</p>
+    <label class="alt"><input type="radio" name="q10" value="a"> a) INSERT INTO, utilizado para adicionar novos registros (linhas) de dados em uma tabela já existente no banco de dados.</label>
+    <label class="alt"><input type="radio" name="q10" value="b"> b) GRANT, que tem a função de conceder privilégios e permissões de acesso para os usuários nos objetos do banco de dados.</label>
+    <label class="alt"><input type="radio" name="q10" value="c"> c) SELECT, comando utilizado para realizar consultas e buscar dados armazenados dentro das tabelas do banco de dados.</label>
+    <label class="alt"><input type="radio" name="q10" value="d"> d) CREATE TABLE, que possui a função de criar novos objetos de banco de dados, como uma nova tabela, definindo sua estrutura e suas colunas.</label>
+    <label class="alt"><input type="radio" name="q10" value="e"> e) UPDATE, que serve para modificar ou atualizar os dados de registros que já existem em uma determinada tabela.</label>
+  </div>
+
+  <!-- Q11 — UNIDADE02 / Questão 2 -->
+  <div class="card" data-q="q11" data-enun="UNIDADE02 Q2 – Propriedade AUTO_INCREMENT">
+    <div class="qtitle">2. (Múltipla Escolha)</div>
+    <p>Ao criar tabelas, especialmente colunas que servirão como chave primária, os SGBDs oferecem mecanismos para automatizar a geração de valores únicos. Isso simplifica a inserção de dados e garante que cada registro tenha um identificador exclusivo sem intervenção manual. Qual é a principal finalidade da propriedade AUTO_INCREMENT no MySQL?</p>
+    <label class="alt"><input type="radio" name="q11" value="a"> a) Garantir que uma coluna não possa receber valores nulos, forçando o preenchimento obrigatório de um dado no momento da inserção.</label>
+    <label class="alt"><input type="radio" name="q11" value="b"> b) Fazer com que o SGBD se encarregue automaticamente de controlar a numeração da coluna, gerando um novo valor sequencial a cada inserção.</label>
+    <label class="alt"><input type="radio" name="q11" value="c"> c) Criptografar automaticamente os dados de uma coluna, garantindo a segurança e a privacidade das informações sensíveis armazenadas.</label>
+    <label class="alt"><input type="radio" name="q11" value="d"> d) Limitar o número de caracteres que podem ser inseridos em uma coluna do tipo VARCHAR, otimizando o espaço de armazenamento em disco.</label>
+    <label class="alt"><input type="radio" name="q11" value="e"> e) Criar um relacionamento de chave estrangeira com outra tabela, validando se o valor inserido existe na tabela de referência.</label>
+  </div>
+
+  <!-- Q12 — UNIDADE02 / Questão 3 -->
+  <div class="card" data-q="q12" data-enun="UNIDADE02 Q3 – JOIN com correspondência em ambas as tabelas">
+    <div class="qtitle">3. (Múltipla Escolha)</div>
+    <p>Em um banco de dados relacional normalizado, as informações frequentemente se encontram distribuídas em várias tabelas. Para gerar relatórios úteis, é preciso combinar os dados dessas tabelas por meio de consultas, utilizando cláusulas de junção. Qual tipo de JOIN deve ser utilizado quando se deseja retornar apenas os registros que possuem correspondência em ambas as tabelas que estão sendo relacionadas?</p>
+    <label class="alt"><input type="radio" name="q12" value="a"> a) LEFT JOIN, que retorna todos os registros da tabela à esquerda e os registros correspondentes da tabela à direita.</label>
+    <label class="alt"><input type="radio" name="q12" value="b"> b) FULL OUTER JOIN, que retorna todos os registros quando há uma correspondência em uma das tabelas, seja na da esquerda ou na da direita.</label>
+    <label class="alt"><input type="radio" name="q12" value="c"> c) RIGHT JOIN, que retorna todos os registros da tabela à direita e os registros correspondentes da tabela à esquerda.</label>
+    <label class="alt"><input type="radio" name="q12" value="d"> d) INNER JOIN, que seleciona e retorna apenas os registros que têm valores correspondentes em ambas as tabelas envolvidas na junção.</label>
+    <label class="alt"><input type="radio" name="q12" value="e"> e) CROSS JOIN, que retorna um produto cartesiano de todas as linhas de ambas as tabelas, sem necessidade de uma condição de junção.</label>
+  </div>
+
+  <!-- Q13 — UNIDADE02 / Questão 4 (Análise) -->
+  <div class="card" data-q="q13" data-enun="UNIDADE02 Q4 – DDL vs DML (Análise de Sentenças)">
+    <div class="qtitle">4. (Análise de Sentenças)</div>
+    <p>A Linguagem SQL é dividida em subconjuntos para organizar suas funcionalidades, sendo a distinção entre DDL (Data Definition Language) e DML (Data Manipulation Language) uma das mais fundamentais. A DDL trata da estrutura dos objetos, enquanto a DML opera sobre os dados contidos neles. Com base nos conceitos do material, analise as seguintes sentenças:</p>
+    <p>I- Os comandos UPDATE e DELETE, utilizados para, respectivamente, alterar e remover registros de uma tabela, são classificados como parte da DML.<br>
+    II- O comando ALTER TABLE, que permite modificar a estrutura de uma tabela (adicionando ou removendo colunas), é um exemplo de comando DDL.<br>
+    III- A principal diferença entre os comandos é que a DML afeta o dicionário de dados do banco, enquanto a DDL afeta apenas os registros das tabelas.</p>
+    <label class="alt"><input type="radio" name="q13" value="A"> A) Apenas a sentença I está correta.</label>
+    <label class="alt"><input type="radio" name="q13" value="B"> B) Apenas as sentenças I e II estão corretas.</label>
+    <label class="alt"><input type="radio" name="q13" value="C"> C) Apenas as sentenças II e III estão corretas.</label>
+    <label class="alt"><input type="radio" name="q13" value="D"> D) Todas as sentenças estão corretas.</label>
+    <label class="alt"><input type="radio" name="q13" value="E"> E) Nenhuma das sentenças está correta.</label>
+  </div>
+
+  <!-- Q14 — UNIDADE02 / Questão 5 (Análise) -->
+  <div class="card" data-q="q14" data-enun="UNIDADE02 Q5 – Tabelas Temporárias (Análise de Sentenças)">
+    <div class="qtitle">5. (Análise de Sentenças)</div>
+    <p>Além das tabelas permanentes que compõem o modelo de dados de um sistema, o MySQL permite a criação de tabelas temporárias, um recurso valioso para desenvolvedores durante a manipulação e análise de dados complexos. A respeito das tabelas temporárias, conforme descrito no material, avalie as seguintes afirmativas:</p>
+    <p>I- Uma tabela temporária é exclusiva da sessão do usuário que a criou e deixa de existir automaticamente assim que o usuário se desconecta do SGBD.<br>
+    II- É possível criar uma tabela temporária já populada com os dados resultantes de um comando SELECT, o que facilita o armazenamento de resultados de consultas complexas.<br>
+    III- Os comandos de manipulação de dados (DML) como INSERT, UPDATE e DELETE não podem ser utilizados em tabelas temporárias, apenas em tabelas permanentes.</p>
+    <label class="alt"><input type="radio" name="q14" value="A"> A) Apenas a sentença I está correta.</label>
+    <label class="alt"><input type="radio" name="q14" value="B"> B) Apenas as sentenças I e II estão corretas.</label>
+    <label class="alt"><input type="radio" name="q14" value="C"> C) Apenas as sentenças II e III estão corretas.</label>
+    <label class="alt"><input type="radio" name="q14" value="D"> D) Todas as sentenças estão corretas.</label>
+    <label class="alt"><input type="radio" name="q14" value="E"> E) Apenas a sentença III está correta.</label>
+  </div>
+
+  <!-- Q15 — UNIDADE02 / Questão 6 (Análise) -->
+  <div class="card" data-q="q15" data-enun="UNIDADE02 Q6 – LEFT/RIGHT/FULL JOIN (Análise de Sentenças)">
+    <div class="qtitle">6. (Análise de Sentenças)</div>
+    <p>Ao construir uma consulta que envolve múltiplas tabelas, a escolha da cláusula JOIN é determinante para o conjunto de resultados. LEFT JOIN e RIGHT JOIN são particularmente úteis para encontrar dados que podem não ter uma correspondência em uma das tabelas. Com base nos exemplos e explicações do material, analise as proposições:</p>
+    <p>I- Ao usar SELECT ... FROM tbcliente_compra LEFT JOIN tbproduto ..., o resultado incluirá todos os clientes, e para aqueles que não compraram um produto, o campo do produto será exibido como NULL.<br>
+    II- O resultado de uma consulta com RIGHT JOIN sempre trará a mesma quantidade de linhas que uma consulta com INNER JOIN, apenas exibindo as colunas em uma ordem diferente.<br>
+    III- O FULL JOIN combina os resultados de um LEFT JOIN e um RIGHT JOIN, garantindo que todos os registros de ambas as tabelas (esquerda e direita) apareçam no resultado final, com NULL onde não houver correspondências.</p>
+    <label class="alt"><input type="radio" name="q15" value="A"> A) Apenas a sentença I está correta.</label>
+    <label class="alt"><input type="radio" name="q15" value="B"> B) Apenas as sentenças II e III estão corretas.</label>
+    <label class="alt"><input type="radio" name="q15" value="C"> C) Apenas as sentenças I e III estão corretas.</label>
+    <label class="alt"><input type="radio" name="q15" value="D"> D) Todas as sentenças estão corretas.</label>
+    <label class="alt"><input type="radio" name="q15" value="E"> E) Nenhuma das sentenças está correta.</label>
+  </div>
+
+  <!-- Discursivas (opcionais, serão levadas para o relatório) -->
+  <h2>Discursivas</h2>
+  <div class="card">
+    <div class="qtitle">D1) Anomalias & 3FN (cenário da startup)</div>
+    <textarea id="d1" placeholder="Escreva sua resposta (opcional)"></textarea>
+  </div>
+  <div class="card">
+    <div class="qtitle">D2) Metadados, Dicionário de Dados & DER</div>
+    <textarea id="d2" placeholder="Escreva sua resposta (opcional)"></textarea>
+  </div>
+</main>
+
+<div class="controls">
+  <button class="primary" id="enviar">Enviar respostas</button>
+</div>
+
+<script>
+/* Gabarito oficial – 15 questões no total */
+const ANSWERS = {
+  /* PARTE 1 (conforme aprovado) */
+  q1:'b', q2:'c', q3:'b',
+  q4:'D', q5:'B', q6:'D',
+  q7:'a', q8:'a', q9:'c',
+  /* PARTE 2 (texto fiel ao PDF) */
+  q10:'d', /* CREATE TABLE é DDL */
+  q11:'b', /* AUTO_INCREMENT gera sequencial */
+  q12:'d', /* INNER JOIN */
+  q13:'B', /* DDL vs DML: I e II */
+  q14:'B', /* Temporárias: I e II */
+  q15:'C'  /* Joins: I e III */
+};
+
+function getChecked(name){
+  const el = document.querySelector(`input[name="${name}"]:checked`);
+  return el ? el.value : null;
+}
+
+document.getElementById('enviar').addEventListener('click', ()=>{
+  const aluno = document.getElementById('aluno').value || '(sem nome)';
+  const email = document.getElementById('email').value || '';
+  const discursivas = { d1: document.getElementById('d1').value||'', d2: document.getElementById('d2').value||'' };
+
+  const respostas = {};
+  const enunciados = {};
+  document.querySelectorAll('.card[data-q]').forEach(card=>{
+    const q = card.getAttribute('data-q');
+    respostas[q] = getChecked(q);
+    // Se preferir, troque pela coleta do texto integral do enunciado:
+    enunciados[q] = card.getAttribute('data-enun') || '';
+  });
+
+  let score = 0, total = Object.keys(ANSWERS).length, detalhes = [];
+  for(const q of Object.keys(ANSWERS)){
+    const escolhido = respostas[q] ?? null;
+    const certo = ANSWERS[q];
+    const correto = escolhido && String(escolhido).toLowerCase() === String(certo).toLowerCase();
+    if(correto) score++;
+    detalhes.push({ id:q, enunciado: enunciados[q], marcado: escolhido, gabarito: certo, correto });
+  }
+
+  const payload = { aluno, email, score, total, detalhes, discursivas };
+  sessionStorage.setItem('prova_bd_result', JSON.stringify(payload));
+  window.location.href = 'resultado.html';
+});
+</script>
+</body>
+</html>
